@@ -8,6 +8,10 @@
 - [x] Complete Project Roadmap File 
 - [x] Search For Related Project On Github
 
+Explanation 
+The related project, origincodeacademy is one that I will be taking some inspiration from, I have linked it within the README file for ease of access in case anyone wanted to see it. 
+Furthermore, the code I will be taking inspiration from is listed under the OregonTrailCode 
+
 ## Sprint 2 
 - [] Game Design Starts
 - [] Create Item List  
