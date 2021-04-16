@@ -34,7 +34,7 @@ month_type3 = [2]
 
 spare_wheel = 0 
 shovel = 0 
-kentucky_rifle = 0 
+rifle = 0 
 pick_axe = 0 
 tent = 0 
 fire_wood = 0
@@ -84,8 +84,9 @@ def play_game():
         pathing(supply)
     elif user.upper() == "C":
         supply = "C"
-        global spear
+        global spear, rifle
         spear += 1
+        rifle += 1
         start()
         pathing(supply)
     else:
@@ -94,20 +95,73 @@ def play_game():
 
 # Combat Functions 
 
-def combat_z():
-    events = ["Bitten!", "Scrached!", "Survived!"]
-    randomizer = random.choice(events)
-    if spear >= 1:
-        print("you have used the spear to defeat the zombies")
+def rifle_combat():
+    global rifle
+    chance_hitR = ["Head", "Torso", "Miss"]
+    randomizerR = random.choice(chance_hitR)
+    if randomizerR == "Head":
+        print("The target was shot in the head and was killed.")
+        time.sleep(4)
+    elif randomizerR == "Torso":
+        print("The target was shot in the torso and falls over and is dispatched.")
+        time.sleep(4)
+    elif randomizerR == "Miss":
+        print("The target was missed")
+        time.sleep(2)
+        print("In desperation you swing the rifle at the target, which shatters the wood stock the rifle.")
+        print("Yet you are alive")
+        rifle -= 1
     else:
-        if randomizer == "Bitten!":
-            print("No matter what you do, the bite festers")
-        elif randomizer == "Scrached!":
-            print("add first Aid Function")
-        elif randomizer == "Survived!":
-            print("You have survived the encounter!")
-        else:
-            print("test")
+        print("Rifle ERROR! ")
+
+def spear_combat():
+    global spear
+    chance_hitR = ["Head", "Torso", "Torso", "Torso", "Miss"]
+    randomizerR = random.choice(chance_hitR)
+    if randomizerR == "Head":
+        print("The target was stabbed in the head and was killed.")
+        time.sleep(4)
+    elif randomizerR == "Torso":
+        print("The target was stabbed in the torso and falls over and is dispatched.")
+        time.sleep(4)
+    elif randomizerR == "Miss":
+        print("The target was missed")
+        time.sleep(2)
+        print("In desperation you hurl the spear at the target, which shatters the wooden shaft.")
+        print("Yet you are alive")
+        spear -= 1
+    else:
+        print("Spear ERROR")
+
+def combat_z():
+    events = ["Bitten!", "Scrached!", "Scrached!", "Notice!", "Notice!", "Notice!", "Notice!"]
+    randomizer = random.choice(events)
+    user = input("use rifle or spear? 'R/S' ").lower()
+    if randomizer == "Bitten!":
+        print("The Zombies Overwhelm you!")
+        print("Death")
+    elif randomizer == "Scrached!":
+        if user == "r":
+            if rifle > 0:
+                print("First Aid Function")
+                rifle_combat()
+        elif user == "s":
+            if spear > 0:
+                print("First Aid Function")
+                spear_combat()
+
+
+    elif randomizer == "Notice!":
+        print("You notice some movement in the brush up ahead, zombies attack!")
+        time.sleep(3)
+        if user == "r":
+            if rifle > 0:
+                print("First Aid Function")
+                rifle_combat()
+        elif user == "s":
+            if spear > 0:
+                print("First Aid Function")
+                spear_combat()
 
 
 # More Events will be added in the future! 
