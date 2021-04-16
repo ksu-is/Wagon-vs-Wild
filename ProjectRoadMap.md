@@ -10,8 +10,8 @@
  
 
 ## Sprint 2 
-- [] Game Design Starts
-- [] Create Item List  
+- [x] Game Design Starts
+- [x] Create Item List  
 - [] Make Sure to Comment Code 
 - [] Complete 6 Code Changes
 

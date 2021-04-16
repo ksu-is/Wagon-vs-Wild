@@ -92,6 +92,7 @@ def play_game():
          play_game()
 
 
+# Combat Functions 
 
 def combat_z():
     events = ["Bitten!", "Scrached!", "Survived!"]
@@ -121,6 +122,8 @@ def pathing(supply):
         continue_journey(supply)
         print("test")
 
+
+# Ambience for game world 
 def days_traveled():
     global miles_traveled, miles_to_travel
     distance_miles = random.randint(10, 30)
@@ -129,6 +132,10 @@ def days_traveled():
     print("You have traveled for, " + str(distance_miles) + "many miles.")
     print("You have traveled for," + str(distance_days) + "many days.")
 
+ 
+
+
+# Victory, Start and ending functions.
 
 def continue_journey(supply):
     journey = next(checkpoints)
@@ -145,11 +152,6 @@ def continue_journey(supply):
             pathing(supply)
     else:
         Victory()
-
-
-
-# Start, continue and End Functions 
-
 
 
 
