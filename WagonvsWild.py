@@ -102,7 +102,7 @@ def combat_z():
         if randomizer == "Bitten!":
             print("No matter what you do, the bite festers")
         elif randomizer == "Scrached!":
-            print("add first Aid Functino")
+            print("add first Aid Function")
         elif randomizer == "Survived!":
             print("You have survived the encounter!")
         else:
@@ -118,9 +118,46 @@ def pathing(supply):
     print("You seem to have encounterd, " + events)
     if events == " Zombies!":
         combat_z()
+        continue_journey(supply)
         print("test")
 
+def days_traveled():
+    global miles_traveled, miles_to_travel
+    distance_miles = random.randint(10, 30)
+    distance_days = random.randint(1,7)
+    distance_miles += miles_traveled
+    print("You have traveled for, " + str(distance_miles) + "many miles.")
+    print("You have traveled for," + str(distance_days) + "many days.")
 
+
+def continue_journey(supply):
+    journey = next(checkpoints)
+    print("The sign on the road says" + journey)
+    if journey != "Little Rock AK!":
+        question = input("input 'Y' or 'N'" + "The journey has been long and difficult, do you continue from, " + journey + "?")
+        if question.lower() == "y":
+            days_traveled()
+            time.sleep(4)
+            pathing(supply)
+        elif question.lower() == "n":
+            ending_choice()
+        else:
+            pathing(supply)
+    else:
+        Victory()
+
+
+
+# Start, continue and End Functions 
+
+
+
+
+def Victory():
+    print("Enter Better game Victory note")
+
+def ending_choice():
+    print("Your Journey comes to an end at")
 
 def start():
     print("                                      Good choice! Let's hit the trail...")
