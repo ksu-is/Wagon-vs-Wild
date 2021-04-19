@@ -133,22 +133,24 @@ def spear_combat():
     else:
         print("Spear ERROR")
 
-def combat_z():
+def combat_z(supply):
     events = ["Bitten!", "Scrached!", "Scrached!", "Notice!", "Notice!", "Notice!", "Notice!"]
     randomizer = random.choice(events)
     user = input("use rifle or spear? 'R/S' ").lower()
     if randomizer == "Bitten!":
         print("The Zombies Overwhelm you!")
-        print("Death")
+        ending_choice()
     elif randomizer == "Scrached!":
         if user == "r":
             if rifle > 0:
                 print("First Aid Function")
                 rifle_combat()
+                continue_journey(supply)
         elif user == "s":
             if spear > 0:
                 print("First Aid Function")
                 spear_combat()
+                continue_journey(supply)
 
 
     elif randomizer == "Notice!":
@@ -156,12 +158,12 @@ def combat_z():
         time.sleep(3)
         if user == "r":
             if rifle > 0:
-                print("First Aid Function")
                 rifle_combat()
+                continue_journey(supply)
         elif user == "s":
             if spear > 0:
-                print("First Aid Function")
                 spear_combat()
+                continue_journey(supply)
 
 
 # More Events will be added in the future! 
@@ -172,8 +174,7 @@ def pathing(supply):
     events = random.choice(random_events)
     print("You seem to have encounterd, " + events)
     if events == " Zombies!":
-        combat_z()
-        continue_journey(supply)
+        combat_z(supply)
         print("test")
 
 
@@ -183,8 +184,8 @@ def days_traveled():
     distance_miles = random.randint(10, 30)
     distance_days = random.randint(1,7)
     distance_miles += miles_traveled
-    print("You have traveled for, " + str(distance_miles) + "many miles.")
-    print("You have traveled for," + str(distance_days) + "many days.")
+    print("You have traveled for, " + str(distance_miles) + " miles.")
+    print("You have traveled for," + str(distance_days) + " days.")
 
  
 
