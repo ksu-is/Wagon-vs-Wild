@@ -14,6 +14,7 @@
 - [x] Create Item List  
 - [] Make Sure to Comment Code 
 - [] Create River, Mountain and Forest Events
+- [] Add Dinosaurs and Wizards
 - [] Chuck Norris Fight 
 - [] Complete 6 Code Changes
 
