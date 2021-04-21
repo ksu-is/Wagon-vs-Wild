@@ -1,75 +1,41 @@
 import time 
 import random
 
-rifle = 1 
-spear = 1
-
-def rifle_combat():
-    global rifle
-    chance_hitR = ["Head", "Torso", "Miss"]
-    randomizerR = random.choice(chance_hitR)
-    if randomizerR == "Head":
-        print("The target was shot in the head and was killed.")
-        time.sleep(4)
-    elif randomizerR == "Torso":
-        print("The target was shot in the torso and falls over and is dispatched.")
-        time.sleep(4)
-    elif randomizerR == "Miss":
-        print("The target was missed")
-        time.sleep(2)
-        print("In desperation you swing the rifle at the target, which shatters the wood stock the rifle.")
-        print("Yet you are alive")
-        rifle -= 1
+def wizard_encounter(supply):
+    color_ans = ["red", "orange", "yellow", "green", "violet", "indigo", "blue"]
+    print("In the distance you see a few robed men in pointy hats, they sit atop a wagon riding towards you.") 
+    time.sleep(3)
+    print("One wears leather hides, the next wears long silk robes, the last is dressed similar to other travilers you have seen along the road.")
+    time.sleep(7)
+    print("The normally dressed Wizard introduces himslef as: Tim the Terrible!")  
+    print("He says, 'In order to pass you must answer me these questions three, lest we strike you with magic!'")
+    time.sleep(7)
+    print("What, is your favorite Color?")
+    print("What, is the air speed velocity of an unlaiden swallow?")
+    print("What, is the capital of Syria?")
+    time.sleep(8)
+    print("At this point you are fairly bemused, until one of them strikes a tree with lightning nearby.")
+    user = input("Your response to the first question.").lower()
+    if user in color_ans:
+        
+        print("Correct on the first question.")
     else:
-        print("Rifle ERROR! ")
-
-def spear_combat():
-    global spear
-    chance_hitR = ["Head", "Torso", "Torso", "Torso", "Miss"]
-    randomizerR = random.choice(chance_hitR)
-    if randomizerR == "Head":
-        print("The target was stabbed in the head and was killed.")
-        time.sleep(4)
-    elif randomizerR == "Torso":
-        print("The target was stabbed in the torso and falls over and is dispatched.")
-        time.sleep(4)
-    elif randomizerR == "Miss":
-        print("The target was missed")
-        time.sleep(2)
-        print("In desperation you hurl the spear at the target, which shatters the wooden shaft.")
-        print("Yet you are alive")
-        spear -= 1
+        print("Wrong, says the wizard in long silk robes, he strikes you with lightning.")
+    user1 = input("Enter a numeric Value").lower()
+    if user1 == "24":
+        
+        print(str(user1) + " miles per hour is correct, now answer the final answer.")
     else:
-        print("Spear ERROR")
-
-def combat_z():
-    events = ["Bitten!", "Scrached!", "Scrached!", "Notice!", "Notice!", "Notice!", "Notice!"]
-    randomizer = random.choice(events)
-    user = input("use rifle or spear? 'R/S' ").lower()
-    if randomizer == "Bitten!":
-        print("The Zombies Overwhelm you!")
-        print("Death")
-    elif randomizer == "Scrached!":
-        if user == "r":
-            if rifle > 0:
-                print("First Aid Function")
-                rifle_combat()
-        elif user == "s":
-            if spear > 0:
-                print("First Aid Function")
-                spear_combat()
-
-
-    elif randomizer == "Notice!":
-        print("You notice some movement in the brush up ahead, zombies attack!")
+        print("Wrong, says the wizard in long silk robes, he strikes you with lightning.")
+    user2 = input("Your response to the third question.").lower()
+    if user2 == "damascus":
+        
+        print("Correct, you have answered all our questions and may go in peace!")
+        time.sleep(4)
+        print("You quickly gather the reins of the horse atop the wagon and continue along the path")
         time.sleep(3)
-        if user == "r":
-            if rifle > 0:
-                print("First Aid Function")
-                rifle_combat()
-        elif user == "s":
-            if spear > 0:
-                print("First Aid Function")
-                spear_combat()
+    else:
+        print("Wrong, says the wizard in long silk robes, he strikes you with lightning.")
 
-combat_z()     
+
+wizard_encounter()
