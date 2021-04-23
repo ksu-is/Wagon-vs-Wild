@@ -45,7 +45,8 @@ lazer_rifle = 0
 magic = 0
 
 
-
+health_points = 50
+enemy_health = 50
 
 
 
@@ -95,15 +96,37 @@ def play_game():
 
 # Combat Functions 
 
+def spear_dino():
+    global health_points, enemy_health
+    print("With spear in hand, you lunge at the dino!")
+    time.sleep(3)
+    print("The spear hits the dinosaur!")
+    dice_rollP = random.randint(8,25)
+    health_points -= dice_rollP
+    dice_rollD = random.randint(10, 20)
+    enemy_health -= dice_rollD
+
+
+def rifle_dino():
+    global health_points, enemy_health
+    print("You reloaded after the first shot, ramming down another round ball with black powder.")
+    print("You shoot wildly at the dinosaur!")
+    dice_rollP = random.randint(8,25)
+    health_points -= dice_rollP
+    dice_rollD = random.randint(10, 20)
+    enemy_health -= dice_rollD
+
+
+
 def rifle_combat():
     global rifle
-    chance_hitR = ["Head", "Torso", "Miss"]
+    chance_hitR = ["Head", "Torso", "Miss", "Head", "Torso"]
     randomizerR = random.choice(chance_hitR)
     if randomizerR == "Head":
         print("The target was shot in the head and was killed.")
         time.sleep(4)
     elif randomizerR == "Torso":
-        print("The target was shot in the torso and falls over and is dispatched.")
+        print("The target was shot in the torso, falls over and is dispatched.")
         time.sleep(4)
     elif randomizerR == "Miss":
         print("The target was missed")
@@ -183,6 +206,48 @@ def river_crossing(supply):
             print("Eventually, your wagon hits a rock and breaks apart. Your journey has come to an end.")
             ending_choice()
 
+
+
+
+def dinosaur_encounter(supply): # add supply later /, "Unseen", "Animal"
+    dino_events = ["Spotted!"]
+    enemy_dinos = ["Velociraptor", "Coelophysis", "Microraptor", "T-Rex"]
+    randomizer = random.choice(dino_events)
+    randomizer1 = random.choice(enemy_dinos)
+    print("In the distance, you see something odd.")
+    time.sleep(3)
+    print("Dinosaurs, some with long green necks, others with sharp tusks on their heads.")
+    print("They stand in a densly forested area with ferns and foliage making them nearly invisible.")
+    time.sleep(5)
+    if randomizer == "Spotted!":
+        print("As you stare in amazement at giant creatures that have not been seen before, instinct tells you")
+        print("to scan the surronding area for threats, you spot a " + randomizer1 + " which stares at you with hungry eyes.")
+        time.sleep(9)
+        print("Three rush at you from the forest, they begin 200 yards away.")
+        print("You have enough time to shoot one, then snapshoot another.")
+        if rifle > 0:
+            print("Your first shot.")
+            rifle_combat()
+            time.sleep(3)
+            print("Your second shot.")
+            rifle_dino()
+            print("after the last shot you grab a spear, but the dino is very fast, you have " + str(health_points) + "HP left.")
+            print("The dinosaur health is, " + str(enemy_health) + " HP currently.")
+            time.sleep(5)
+            while enemy_health >= 1: 
+                spear_dino()
+                if enemy_health >= 1:
+                    print("Victory")
+                    continue_journey(supply)
+                    break
+                elif health_points >= 0:
+                    print("Death")
+                    break
+                else:
+                    print("End Combat Fail")
+    else:
+        print("test")
+
 def wizard_encounter(supply):
     color_ans = ["red", "orange", "yellow", "green", "violet", "indigo", "blue"]
     print("In the distance you see a few robed men in pointy hats, they sit atop a wagon riding towards you.") 
@@ -226,7 +291,7 @@ def wizard_encounter(supply):
 # More Events will be added in the future! 
 
 def pathing(supply):
-    random_events = [" Zombies!", "Wizards!"]
+    random_events = [" Zombies!", "Wizards!", "River!", "Dinosaurs!"]
     time.sleep(3)
     events = random.choice(random_events)
     print("You seem to have encounterd, " + events)
@@ -235,6 +300,10 @@ def pathing(supply):
         print("test")
     elif events == "Wizards!":
         wizard_encounter(supply)
+    elif events == "River!":
+        river_crossing(supply)
+    elif events == "Dinosaurs!":
+        dinosaur_encounter(supply)
 
 
 # Ambience for game world 
