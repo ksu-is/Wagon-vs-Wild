@@ -1,162 +1,63 @@
 import time 
 import random
 
-rifle = 1
+magic = 0
 spear = 1
-pick = 0
+rifle = 1
+food_remaining = 1000
+spare_wheel = 0
 
-def rifle_combat():
-    global rifle
-    chance_hitR = ["Head", "Torso", "Miss", "Head", "Torso"]
-    randomizerR = random.choice(chance_hitR)
-    if randomizerR == "Head":
-        print("The target was shot in the head and was killed.")
-        time.sleep(4)
-    elif randomizerR == "Torso":
-        print("The target was shot in the torso, falls over and is dispatched.")
-        time.sleep(4)
-    elif randomizerR == "Miss":
-        print("The target was missed")
-        time.sleep(2)
-        print("In desperation you swing the rifle at the target, which shatters the wood stock the rifle.")
-        print("Yet you are alive")
-        rifle -= 1
-    else:
-        print("Rifle ERROR! ")
-
-def spear_combat():
-    global spear
-    chance_hitR = ["Head", "Torso", "Torso", "Torso", "Miss"]
-    randomizerR = random.choice(chance_hitR)
-    if randomizerR == "Head":
-        print("The target was stabbed in the head and was killed.")
-        time.sleep(4)
-    elif randomizerR == "Torso":
-        print("The target was stabbed in the torso and falls over and is dispatched.")
-        time.sleep(4)
-    elif randomizerR == "Miss":
-        print("The target was missed")
-        time.sleep(2)
-        print("In desperation you hurl the spear at the target, which shatters the wooden shaft.")
-        print("Yet you are alive")
-        spear -= 1
-    else:
-        print("Spear ERROR")
-
-def mountain_pass():
-    global rifle, spear
-    events_mountain = ["Trader!", "Dangerous Crossing!"] 
-    randomizerM = random.choice(events_mountain)
-    print("Your wagon moves out of the forest and begins crossing grasslands, the grass moves with the wind like waves in the ocean.")
-    time.sleep(10)
-    print("After crossing the grassland, you enter the mountains...")
-    print("Narrow, winding roads lead into the clouds, if the horses spook then your wagon could drop hundreds of feet!")
-    time.sleep(8)
-    if randomizerM == "Trader!":
-        print("In the distance you spot a camp fire, do you approach it?")
-        decision1 = input("Your decision: Y/N").lower()
-        if decision1.startswith("y"):
-            print("You approach the camp fire...")
+def forest_encounter():
+    global spear, spare_wheel, food_remaining, magic
+    events_forest = ["Lost!"]
+    randomizerF = random.choice(events_forest)
+    print("You have entered a dense forest with winding paths, passing the remains of abandoned towns \n and forelorn signs who's markings have long since eroded.")
+    time.sleep(7)
+    print("Following these winding paths is difficult enough while paying attention to your surroundings.")
+    time.sleep(5)
+    if randomizerF == "Scavenge!":
+        print("You run into another abandoned town, it looks like everyone left in a hurry, there might be supplies!")
+        user1 = input("Your Decision: Search the houses 'H' or town hall 'T'?").lower()
+        if user1.startswith("h"):
+            print("You begin to search through the houses, nearby you find...")
+            time.sleep(4)
+            print("A new wagon wheel as well as a spear.")
+            spear += 1
+            spare_wheel += 1
+            print("Spear and wheel have been added to inventory.")
+        else: 
+            print("You begin to search through the town hall.")
             time.sleep(5)
-            print("An old man sits by the camp fire, he asks you if there is anything you need.")
-            print("He offers to sell a rifle or a spear!")
+            print("Something shines in the corner, unlike anything you have seen before.")
+            time.sleep(4)
+            print("A coin, it shines and glows in your hand, this could be useful to sell one day!")
+            print("Magic added to inventory!")
+            magic += 1 
+    elif randomizerF == "Lost!":
+        print("As you walk through the forest, the path becomes difficult to see, the wagon markes in the road have disappeared.")
+        time.sleep(8)
+        user2 = input("Do you keep going or stop and camp? G/C ").lower()
+        if user2.startswith("g"):
+            print("You decide to back track and hopefully find a path.")
+            print("After 10 hours you have found the path once again, yet used half of your food!")
+            food_remaining -= 500
+            if food_remaining <= 0:
+                print("You have run out of food and died.")
+            else:
+                print("You navigate out of the forest and continue along your journey!")
+        else:
+            print("You have decided to camp here for the night, you hear many different wild animals during the night!")
             time.sleep(5)
-            decision2 = input("Your decision: R/S").lower()
-            if decision2.startswith("r"):
-                print("You look through his selection of rifles and find one that stands out from the rest!")
-                time.sleep(7)
-                print("This particular kentucky long rifle has a maple wood stock and a blued barrel, it looks reliable.")
-                rifle += 1
-                print("rifle has been added to inventory!")
-                print(rifle)
+            print("When you awake the next morning, you notice some items have gone missing, \n -200 food. \n -1 spear.")
+            food_remaining -= 200
+            spear -= 1 
+            if food_remaining <= 0:
+                print("You have run out of food and died.")
             else:
-                print("You look through the selection of spears and find a boar hunting spear.")
-                time.sleep(7)
-                print("The shaft is made of hard wood, while the spear itself is razor sharp steel!")
-                spear += 1
-                print(spear)
-        else:
-            print("You circumnavigate the camp fire and pass through the mountins safely.")
-    elif randomizerM == "Dangerous Crossing!":
-        print("you hear a rumbling in the mountains, furthermore, there is a fork in the road.")
-        print("Either take an old looking bride OR a narrow path.")
-        time.sleep(5)
-        decision3 = input("Your decision: B/P").lower()
-        if decision3.startswith("b"):
-            print("The bridge is old and narrow, fraying sections of rope hold up beams that should be able to hold your wagon.")
-            print("Wooden beams look relatively tough and show no signs of rotting.")
-            print("Do you go slowly or quickly across the bridge?")
-            decision4 = input("Your decision: S/Q")
-            if decision4.startswith("q"):
-                print("You snap the reigns and the two horses pulling the cart leap into action, \n the ropes go taught and the beams groan under the weight")
-                time.sleep(8)
-                print("Near the end of the bridge, you hear ropes begin to snap, however the wagon \n safely crosses to the other side as the old bridge collapses into the abyss!")
-                print("You move out of the mountains safely.")
-            else:
-                print("You slowly cross the bridge, halfway through the ropes begin to snap and you feel the entire bridge lurch in one direction.")
-                print("Suddenly, the horses spook and take off down the bridge.")
-                print("Sadly, the bridge does not hold out, you fall into the abyss.")
-        else:
-            print("You have chosen the narrow path")
-            print("As you travel down the narrow path you encounter a portion of the path blocked by rocks.")
-            time.sleep(6)
-            print("Do you use a pick axe to clear a path or attempt to go around it?")
-            decision5 = input("Your Decision: Pick/Around").lower()
-            if decision5.isalpha:
-                if pick > 0:
-                    print("You begin clearing a path with the pick axe, time work is time consuming and tedious.")
-                    print("Eventually the pathway is cleared, you are able to pass through the mountains!")
-                else:
-                    print("You do not have a pick within inventory, meaning you will need to back track and circumnavigate.")
-                    print("During this you run into bandits, do you bribe them OR fight them?")
-                    decision6 = input("Your decision: B/F").lower()
-                    if decision6.startswith("b"):
-                        print("You begin to reason with the bandits.")
-                        print("Bandit: We have you surrounded, hand over any weapons along with cash and you can go on your way.")
-                        print("You hand over weapons and money, the bandits do not harm you after this, they explain that corpses bring too much attention.")
-                        print("Lost Items.")
-                        if rifle and spear >= 1:
-                            rifle -= 1
-                            spear -= 1
-                            print(rifle, spear)
-                        elif rifle >= 1:
-                            rifle -= 1 
-                            print(rifle)
-                        elif spear >= 1:
-                            spear -= 1
-                            print(spear)
-                        else:
-                            print("Bandit decision fail.")
-                    else:
-                        print("As the bandit opens his mouth to talk you reach for the rifle or spear...")
-                        decision7 = input("Your decision: R/S").lower()
-                        if decision7.startswith("r"):
-                            print("You reach for the rifle!")
-                            if rifle >= 1:
-                                rifle_combat()
-                                print("Another bandit peeks around a rock and shoots as the other bandits run away!")
-                                print("After this, you navigate out of the mountains, hopefully that will not happen again!")
-                                time.sleep(5)
-                            else:
-                                print("You do not have a rifle.")
-                                time.sleep(5)
-                                print("The bandit notices your quick movements and shoots.")
-                        else:
-                            print("You reach for the spear!")
-                            if spear >= 1:
-                                spear_combat()
-                                time.sleep(5)
-                                print("Another bandit peeks around a rock and shoots as the other bandits run away!")
-                                time.sleep(5)
-                            else:
-                                print("You do not have a spear.")
-                                time.sleep(5)
-                                print("The bandit notices you quick movements and shoots.")
-            else:
-                print("Mountain Bandits Fail!")
+                print("You continue the journey.") 
 
 
-mountain_pass()
+forest_encounter()
 
 
 
