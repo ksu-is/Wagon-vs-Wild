@@ -13,10 +13,10 @@
 - [x] Game Design Starts
 - [x] Create Item List  
 - [x] Make Sure to Comment Code 
-- [] Create River, Mountain and Forest Events
+- [x] Create River, Mountain and Forest Events
 - [x] Add Dinosaurs and Wizards
 - [] Chuck Norris Fight 
-- [] Complete 6 Code Changes
+- [x] Complete 6 Code Changes
 
 ## Sprint 3 
 - [] Make Significant Progress 
