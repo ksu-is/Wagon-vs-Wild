@@ -580,7 +580,7 @@ def wizard_encounter(supply):
 # More Events will be added in the future! 
 
 def pathing(supply): #" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!" 
-    random_events = ["Wizards!"]
+    random_events = [" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!", "Wizards!"]
     time.sleep(3)
     events = random.choice(random_events)
     print("You seem to have encounterd, " + events)
