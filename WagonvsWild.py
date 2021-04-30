@@ -20,7 +20,7 @@ food_per_day = 15
 Diseases_encountered = 0
 current_diseases = 0
 total_diseases = 10
-
+e = 0
 
 Months_list = ["test", "January", "Febuary", "March", "April", "May", 
 "June", "July", "August", "September", "October", "November", "December"]
@@ -78,24 +78,30 @@ def play_game():
     print(general_store2)
     time.sleep(5)
     print(" Your choices for the long road ahead are as follows, minimalist Travel package for $300, normal Travel package $500 and Extensive Package $800")
-    user = input(" Type 'A' for minimal, 'B for normal and 'c' for extensive")
+    user = input(" Type 'A' for Easy, 'B for normal and 'c' for Hard")
     if user.upper() == "A":
         supply = "A"
-        global spear, rifle
-        spear += 1
-        rifle += 1
+        global spear, rifle, spare_wheel, pick_axe 
+        spear += 3
+        rifle += 3
+        spare_wheel = 2
+        pick_axe = 2
         start()
         pathing(supply)
     elif user.upper() == "B":
         supply = "B"
-        spear += 1
-        rifle += 1
+        spear += 2
+        rifle += 2
+        spare_wheel = 1
+        pick_axe = 1
         start()
         pathing(supply)
     elif user.upper() == "C":
         supply = "C"
-        spear += 1
+        spear += 2
         rifle += 1
+        spare_wheel = 1
+        pick_axe = 1
         start()
         pathing(supply)
     else:
@@ -639,7 +645,9 @@ def Victory():
     print("Enter Better game Victory note")
 
 def ending_choice():
-    print("Your Journey comes to an end at")
+    print("Your Journey comes to an end.")
+    print("Please Try again!")
+    quit()
 
 def start():
     print("                                      Good choice! Let's hit the trail...")
