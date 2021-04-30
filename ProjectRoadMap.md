@@ -14,12 +14,12 @@
 - [x] Create Item List  
 - [x] Make Sure to Comment Code 
 - [x] Create River, Mountain and Forest Events
-- [x] Add Dinosaurs and Wizards
-- [] Chuck Norris Fight 
+- [x] Add Dinosaurs and Wizards 
 - [x] Complete 6 Code Changes
 
 ## Sprint 3 
-- [] Make Significant Progress 
+- [x] Make Significant Progress 
+- [] Chuck Norris Fight
 - [] Create Powerpoint Slide 
 - [] Finalize Game Before Presentation Deadline 
 
