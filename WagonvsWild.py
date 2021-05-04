@@ -201,6 +201,7 @@ def combat_z(supply):
                 spear_combat()
                 continue_journey(supply)
 
+# Events 
 
 def river_crossing(supply):
     global spare_wheel
@@ -223,7 +224,7 @@ def river_crossing(supply):
 
 def mountain_pass(supply):
     global rifle, spear
-    events_mountain = ["Trader!", "Dangerous Crossing!"] 
+    events_mountain = ["Trader!", "Dangerous Crossing!"] # Notice there are two different options, based on a random outcome two different scenarios play out.
     randomizerM = random.choice(events_mountain)
     print("Your wagon moves out of the forest and begins crossing grasslands, the grass moves with the wind like waves in the ocean.")
     time.sleep(10)
@@ -347,7 +348,7 @@ def mountain_pass(supply):
             else:
                 print("Mountain Bandits Fail!")
 
-def dinosaur_encounter(supply): # add supply later /, "Unseen", "Animal"
+def dinosaur_encounter(supply): # Working in tandem with the Dino Combat functions.
     dino_events = ["Spotted!"]
     enemy_dinos = ["Velociraptor", "Coelophysis", "Microraptor", "T-Rex"]
     randomizer = random.choice(dino_events)
@@ -369,7 +370,7 @@ def dinosaur_encounter(supply): # add supply later /, "Unseen", "Animal"
             rifle_combat()
             time.sleep(3)
             print("Your second shot.")
-            rifle_dino()
+            rifle_dino() # Example of combat function. 
             print("after the last shot you grab a spear, but the dino is very fast, you have " + str(health_points) + "HP left.")
             print("The dinosaur health is, " + str(enemy_health) + " HP currently.")
             time.sleep(5)
@@ -584,10 +585,10 @@ def wizard_encounter(supply):
         print("Wrong, says the wizard in long silk robes, he strikes you with lightning.")
         ending_choice()
 
-# More Events will be added in the future! 
+# These are the events the player can run across, they are chosen randomly.  
 
-def pathing(supply): #" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!" 
-    random_events = [" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!", "Wizards!"]
+def pathing(supply): #" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!",  
+    random_events = [" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountains!", "Chuck Norris!"]
     time.sleep(3)
     events = random.choice(random_events)
     print("You seem to have encounterd, " + events)
@@ -610,7 +611,7 @@ def pathing(supply): #" Zombies!", "Wizards!", "River!", "Dinosaurs!", "Mountain
 
 
 
-# Ambience for game world 
+# This code plays right after an encounter. 
 def days_traveled():
     global miles_traveled, miles_to_travel
     distance_miles = random.randint(10, 30)
