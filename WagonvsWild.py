@@ -34,14 +34,12 @@ month_type3 = [2]
 
 spare_wheel = 0 
 shovel = 0 
-rifle = 0 
-pick_axe = 0 
+rifle = 0  
 tent = 0 
 fire_wood = 0
 shoes = 0
 spear = 0 
 bow = 0 
-lazer_rifle = 0
 magic = 0
 
 
@@ -124,6 +122,7 @@ def spear_dino():
 def rifle_dino():
     global health_points, enemy_health
     print("You reloaded after the first shot, ramming down another round ball with black powder.")
+    time.sleep(5)
     print("You shoot wildly at the dinosaur!")
     dice_rollP = random.randint(8,25)
     health_points -= dice_rollP
@@ -213,6 +212,7 @@ def river_crossing(supply):
         continue_journey(supply)
     elif event.startswith("f"):
         print("You have run into trouble on the river, a wagon wheel breaks.")
+        time.sleep(3)
         spare_wheel -= 1
         if spare_wheel == 0:
             print("You do not have a spare wagon wheel, the wagon begins floating along the river.")
@@ -363,6 +363,7 @@ def dinosaur_encounter(supply): # add supply later /, "Unseen", "Animal"
         time.sleep(9)
         print("Three rush at you from the forest, they begin 200 yards away.")
         print("You have enough time to shoot one, then snapshoot another.")
+        time.sleep(4)
         if rifle > 0:
             print("Your first shot.")
             rifle_combat()
@@ -616,7 +617,7 @@ def days_traveled():
     distance_days = random.randint(1,7)
     distance_miles += miles_traveled
     print("You have traveled for, " + str(distance_miles) + " miles.")
-    print("You have traveled for," + str(distance_days) + " days.")
+    print("You have traveled for, " + str(distance_days) + " days.")
 
  
 
@@ -642,7 +643,10 @@ def continue_journey(supply):
 
 
 def Victory():
-    print("Enter Better game Victory note")
+    print("You have made it to Little Rock Arkansas!")
+    time.sleep(4)
+    print("A perfect patch of land in a forest soon greet you, thank's for playing!")
+    quit()
 
 def ending_choice():
     print("Your Journey comes to an end.")
@@ -650,7 +654,7 @@ def ending_choice():
     quit()
 
 def start():
-    print("                                      Good choice! Let's hit the trail...")
+    print("             Excellent, you begin the journey....")
     
     print("You are now leaving Rhode Island!")
     
