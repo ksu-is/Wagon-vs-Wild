@@ -19,9 +19,9 @@
 
 ## Sprint 3 
 - [x] Make Significant Progress 
-- [] Chuck Norris Fight
-- [] Create Powerpoint Slide 
-- [] Finalize Game Before Presentation Deadline 
+- [x] Chuck Norris Fight
+- [x] Create Powerpoint Slide 
+- [x] Finalize Game Before Presentation Deadline 
 
 ## Final Presentation
 - [] Present and Run Code 
